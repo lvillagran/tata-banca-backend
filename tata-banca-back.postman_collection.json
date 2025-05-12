@@ -1,0 +1,408 @@
+{
+	"info": {
+		"_postman_id": "cc8b60a9-4194-4c9b-b259-01f502ca1e18",
+		"name": "tata-banca-back",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30474215"
+	},
+	"item": [
+		{
+			"name": "CreaCliente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"nombre\": \"LUIS MENDOZA\",\n    \"genero\": \"M\",\n    \"edad\": \"60\",\n    \"identificacion\": \"0945678901\",\n    \"direccion\": \"CALLE MANABÍ Y LOJA\",\n    \"telefono\": \"0954321789\"\n  }\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9098/api/v1/mantenimiento/clientes/crear",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9098",
+					"path": [
+						"api",
+						"v1",
+						"mantenimiento",
+						"clientes",
+						"crear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreaCuenta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": " \n  {\n    \"tipoCuenta\": \"AHORROS\",\n    \"saldoInicial\": 10.00,\n    \"identificacionCliente\": \"0945678901\"\n  }\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/v1/operaciones/cuentas/crear",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"v1",
+						"operaciones",
+						"cuentas",
+						"crear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreaMovimiento",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"tipoMovimiento\": \"DEPOSITO\",\n    \"valor\": 100.00,\n    \"numeroCuenta\": \"4818894541\"\n  }\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/v1/operaciones/movimientos/crear",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"v1",
+						"operaciones",
+						"movimientos",
+						"crear"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListarMovimiento",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/v1/operaciones/movimientos/listar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"v1",
+						"operaciones",
+						"movimientos",
+						"listar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "MovimientoReporte",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n  \"identificacionCliente\": \"0945678901\",\n  \"fechaInicio\": \"01/05/2025\",\n  \"fechaFin\": \"30/05/2025\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/v1/operaciones/movimientos/reporte",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"v1",
+						"operaciones",
+						"movimientos",
+						"reporte"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListarCuenta",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/v1/operaciones/cuentas/listar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"v1",
+						"operaciones",
+						"cuentas",
+						"listar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarCuenta",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/v1/operaciones/cuentas/eliminar/1234567890",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"v1",
+						"operaciones",
+						"cuentas",
+						"eliminar",
+						"1234567890"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarMovimiento",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/v1/operaciones/movimientos/eliminar/123456789",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"v1",
+						"operaciones",
+						"movimientos",
+						"eliminar",
+						"123456789"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ListaCliente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9098/api/v1/mantenimiento/clientes/listar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9098",
+					"path": [
+						"api",
+						"v1",
+						"mantenimiento",
+						"clientes",
+						"listar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EliminarCliente",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9098/api/v1/mantenimiento/clientes/eliminar/1803537214",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9098",
+					"path": [
+						"api",
+						"v1",
+						"mantenimiento",
+						"clientes",
+						"eliminar",
+						"1803537214"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarCliente",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"nombre\": \"Juan Pérez\",\n  \"genero\": \"MASCULINO\",\n  \"edad\": \"30\",\n  \"direccion\": \"Calle Nueva 123  LEO xxx\",\n  \"telefono\": \"0999999999\",\n  \"contrasena\": \"123456\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9098/api/v1/mantenimiento/clientes/actualizar/1803537214",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9098",
+					"path": [
+						"api",
+						"v1",
+						"mantenimiento",
+						"clientes",
+						"actualizar",
+						"1803537214"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ActualizarCuenta",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"numeroCuenta\": \"1234567890\",\n  \"tipoCuenta\": \"AHORROS\",\n  \"saldoInicial\": 200.00,\n  \"estado\": true,\n  \"identificacionCliente\": \"1803537214\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9091/api/v1/operaciones/cuentas/actualizar/1234567890",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9091",
+					"path": [
+						"api",
+						"v1",
+						"operaciones",
+						"cuentas",
+						"actualizar",
+						"1234567890"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

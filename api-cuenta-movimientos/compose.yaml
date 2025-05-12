@@ -1,0 +1,57 @@
+version: '3.8'
+
+services:
+  # Base de datos PostgreSQL
+  postgres:
+    image: postgres:15
+    container_name: postgres-db
+    environment:
+      POSTGRES_DB: tata_banco
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456789
+    ports:
+      - "5432:5432"  # Puertos expuestos
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persistencia de datos
+    networks:
+      - backend
+
+  # Microservicio API Clientes Personas
+  api-clientes-personas:
+    build:
+      context: ./api-clientes-personas
+    ports:
+      - "9098:9098"  # Exponiendo el puerto 9098
+    container_name: api-clientes-personas
+    depends_on:
+      - postgres
+    networks:
+      - backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/tata_banco
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 123456789
+    # Asegúrate de que el servicio esté configurado para escuchar en el puerto 9098 como definiste en application.properties
+
+  # Microservicio API Cuenta Movimientos
+  api-cuenta-movimientos:
+    build:
+      context: ./api-cuenta-movimientos
+    ports:
+      - "9091:9091"  # Exponiendo el puerto 9091
+    container_name: api-cuenta-movimientos
+    depends_on:
+      - postgres
+    networks:
+      - backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/tata_banco
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 123456789
+    # Asegúrate de que este servicio esté configurado para escuchar en el puerto 9091 como definiste en application.properties
+
+volumes:
+  postgres_data:  # Definición del volumen para persistir los datos de PostgreSQL
+
+networks:
+  backend:  # Red compartida entre los contenedores
